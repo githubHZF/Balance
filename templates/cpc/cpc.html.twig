@@ -1,0 +1,233 @@
+	
+	<link rel="stylesheet" href="{{asset('assetss/css/cpc.css')}}">
+
+
+
+	<div class="display" style="display: flex;">
+		<div class="card-body table1 col-9" id="table-scroll1">
+			<table id="cpc" class="display text-center" style="width: 100%">
+				<thead>
+					<tr>
+						<th>Libelle</th>
+						<th></th>
+						<th>Exercice 1</th>
+						<th></th>
+						<th>Exercice 2</th>
+						<th class="">TE 1+2</th>
+						{# <th class="">Totaux de l'exercice 1+2</th> #}
+						<th width="-7px" class="bg-danger text-white">TEP</th>
+						{# <th width="-7px" class="bg-danger text-white">Totaux de l'exercice precd</th> #}
+						<th></th>
+					</tr>
+				</thead>
+
+				<tbody id="balancecpc">
+
+					{% for cpc in cpcs %}
+
+						<tr id="click-first" {% if cpc.Grp == 1 %} class="colorTr" {% endif %}{% if cpc.Grp == 3 %} class="colorTe" {% endif %}>
+							<td style="text-align:start;width: 40%;">{{ cpc.Libelle }}</td>
+							<td style="text-align: center; " id="postecpc">{{ cpc.Poste }}</td>
+							<td style="text-align: center;">
+
+									{% set TotalA = 0 %}
+									{% set TotalB = 0 %}
+									{% set TotalAB = 0 %}
+									{% set TotalC = 0 %}
+									{% set TotalD = 0 %}
+									{% set TotalE = 0 %}
+									{% set TotalF = 0 %}
+									{% set TotalG = 0 %}
+
+									{% for s in cpcs %}
+
+										{% if s.type == 'A' %}{% set TotalA = TotalA +  s.Exer1  %}{% endif %}
+										{% if s.type == 'B' %}{% set TotalB = TotalB +  s.Exer1  %}{% endif %}
+										{% set TotalAB =  TotalA + TotalB  %}
+										{% if s.type == 'C' %}{% set TotalC = TotalC +  s.Exer1  %}{% endif %}
+										{% if s.type == 'D' %}{% set TotalD = TotalD +  s.Exer1  %}{% endif %}
+										{% if s.type == 'E' %}{% set TotalE = TotalE +  s.Exer1  %}{% endif %}
+										{% if s.type == 'F' %}{% set TotalF = TotalF +  s.Exer1  %}{% endif %}
+										{% if s.type == 'G' %}{% set TotalG = TotalG +  s.Exer1  %}{% endif %}
+										
+									{% endfor %}
+
+									{% if cpc.type == 'TA' %}{% if TotalA == 0 %}{% else %}{{ TotalA |number_format(2, ' , ' ,  '  ') }}{% endif %}{% else %}
+									{% if cpc.Exer1 == 0 %}{% else %}{{ cpc.Exer1 |number_format(2, ' , ' ,  '  ') }}{% endif %}{% endif %}
+									{% if cpc.type == 'TB' %}{% if TotalAB == 0 %}{% else %}{{ TotalAB |number_format(2, ' , ' ,  '  ') }}{% endif %}{% endif %}
+									{% if cpc.type == 'TC' %}{% if TotalC == 0 %}{% else %}{{ TotalC |number_format(2, ' , ' ,  '  ') }}{% endif %}{% endif %}
+									{% if cpc.type == 'TD' %}{% if TotalD == 0 %}{% else %}{{ TotalD |number_format(2, ' , ' ,  '  ') }}{% endif %}{% endif %}
+									{% if cpc.type == 'TE' %}{% if TotalE == 0 %}{% else %}{{ TotalE |number_format(2, ' , ' ,  '  ') }}{% endif %}{% endif %}
+									{% if cpc.type == 'TF' %}{% if TotalF == 0 %}{% else %}{{ TotalF |number_format(2, ' , ' ,  '  ') }}{% endif %}{% endif %}
+									{% if cpc.type == 'TG' %}{% if TotalG == 0 %}{% else %}{{ TotalG |number_format(2, ' , ' ,  '  ') }}{% endif %}{% endif %}
+									
+							</td>
+
+							<td style="text-align: center;" id="compte">{{ cpc.Compte }}</td>
+
+							<td style="text-align: center;">
+
+									{% set TotalA = 0 %}
+									{% set TotalB = 0 %}
+									{% set TotalAB = 0 %}
+									{% set TotalC = 0 %}
+									{% set TotalD = 0 %}
+									{% set TotalE = 0 %}
+									{% set TotalF = 0 %}
+									{% set TotalG = 0 %}
+
+									{% for s in cpcs %}
+
+										{% if s.type == 'A' %}{% set TotalA = TotalA +  s.Exer2  %}{% endif %}
+										{% if s.type == 'B' %}{% set TotalB = TotalB +  s.Exer2  %}{% endif %}
+										{% set TotalAB =  TotalA + TotalB  %}
+										{% if s.type == 'C' %}{% set TotalC = TotalC +  s.Exer2  %}{% endif %}
+										{% if s.type == 'D' %}{% set TotalD = TotalD +  s.Exer2  %}{% endif %}
+										{% if s.type == 'E' %}{% set TotalE = TotalE +  s.Exer2  %}{% endif %}
+										{% if s.type == 'F' %}{% set TotalF = TotalF +  s.Exer2  %}{% endif %}
+										{% if s.type == 'G' %}{% set TotalG = TotalG +  s.Exer2  %}{% endif %}
+										
+									{% endfor %}
+
+									{% if cpc.type == 'TA' %}{% if TotalA == 0 %}{% else %}{{ TotalA |number_format(2, ' , ' ,  '  ') }}{% endif %}{% else %}
+									{% if cpc.Exer2 == 0 %}{% else %}{{ cpc.Exer2 |number_format(2, ' , ' ,  '  ') }}{% endif %}{% endif %}
+									{% if cpc.type == 'TB' %}{% if TotalAB == 0 %}{% else %}{{ TotalAB |number_format(2, ' , ' ,  '  ') }}{% endif %}{% endif %}
+									{% if cpc.type == 'TC' %}{% if TotalC == 0 %}{% else %}{{ TotalC |number_format(2, ' , ' ,  '  ') }}{% endif %}{% endif %}
+									{% if cpc.type == 'TD' %}{% if TotalD == 0 %}{% else %}{{ TotalD |number_format(2, ' , ' ,  '  ') }}{% endif %}{% endif %}
+									{% if cpc.type == 'TE' %}{% if TotalE == 0 %}{% else %}{{ TotalE |number_format(2, ' , ' ,  '  ') }}{% endif %}{% endif %}
+									{% if cpc.type == 'TF' %}{% if TotalF == 0 %}{% else %}{{ TotalF |number_format(2, ' , ' ,  '  ') }}{% endif %}{% endif %}
+									{% if cpc.type == 'TG' %}{% if TotalG == 0 %}{% else %}{{ TotalG |number_format(2, ' , ' ,  '  ') }}{% endif %}{% endif %}
+							</td>
+
+							<td style="text-align: center;">
+
+									{% set TotalA = 0 %}
+									{% set TotalB = 0 %}
+									{% set TotalAB = 0 %}
+									{% set TotalC = 0 %}
+									{% set TotalAC = 0 %}
+									{% set TotalD = 0 %}
+									{% set TotalE = 0 %}
+									{% set TotalDE = 0 %}
+									{% set TotalAE = 0 %}
+									{% set TotalF = 0 %}
+									{% set TotalG = 0 %}
+									{% set TotalFG = 0 %}
+									{% set TotalAG = 0 %}
+									{% set TotalTT = 0 %}
+									{% set TAZE = 0 %}
+									{% set TAZEE = 0 %}
+
+									{% for s in cpcs %}
+
+										{% if s.type == 'A' %}{% set TotalA = TotalA +  s.Total  %}{% endif %}
+										{% if s.type == 'B' %}{% set TotalB = TotalB +  s.Total  %}{% endif %}
+										{% set TotalAB =  TotalA + TotalB  %}
+										{% if s.type == 'C' %}{% set TotalC = TotalC +  s.Total  %}{% endif %}
+										{% set TotalAC =  TotalAB - TotalC  %}
+										{% if s.type == 'D' %}{% set TotalD = TotalD +  s.Total  %}{% endif %}
+										{% if s.type == 'E' %}{% set TotalE = TotalE +  s.Total  %}{% endif %}
+										{% set TotalDE =  TotalD - TotalE  %}
+										{% set TotalAE =  TotalAC + TotalDE  %}
+										{% if s.type == 'F' %}{% set TotalF = TotalF +  s.Total  %}{% endif %}
+										{% if s.type == 'G' %}{% set TotalG = TotalG +  s.Total  %}{% endif %}
+										{% set TotalFG =  TotalF - TotalG  %}
+										{% set TotalAG =  TotalAE + TotalFG  %}
+										{% set TotalTT =  TotalAG  %}
+										{% set TAZE =  TotalAB + TotalD + TotalF  %}
+										{% set TAZEE =  TotalC + TotalE + TotalG +  TotalAG + TotalTT %}
+										
+									{% endfor %}
+
+									{% if cpc.type == 'TA' %}{% if TotalA == 0 %}{% else %}{{ TotalA |number_format(2, ' , ' ,  '  ') }}{% endif %}{% else %}
+									{% if cpc.Total == 0 %}{% else %}{{ cpc.Total |number_format(2, ' , ' ,  '  ') }}{% endif %}{% endif %}
+									{% if cpc.type == 'TB' %}{% if TotalAB == 0 %}{% else %}{{ TotalAB |number_format(2, ' , ' ,  '  ') }}{% endif %}{% endif %}
+									{% if cpc.type == 'TC' %}{% if TotalC == 0 %}{% else %}{{ TotalC |number_format(2, ' , ' ,  '  ') }}{% endif %}{% endif %}
+									{% if cpc.type == 'TAC' %}{% if TotalC == 0 %}{% else %}{{ TotalAC  |number_format(2, ' , ' ,  '  ') }}{% endif %}{% endif %}
+									{% if cpc.type == 'TD' %}{% if TotalD == 0 %}{% else %}{{ TotalD |number_format(2, ' , ' ,  '  ') }}{% endif %}{% endif %}
+									{% if cpc.type == 'TE' %}{% if TotalE == 0 %}{% else %}{{ TotalE |number_format(2, ' , ' ,  '  ') }}{% endif %}{% endif %}
+									{% if cpc.type == 'TDE' %}{% if TotalE == 0 %}{% else %}{{ TotalDE |number_format(2, ' , ' ,  '  ') }}{% endif %}{% endif %}
+									{% if cpc.type == 'TAE' %}{% if TotalE == 0 %}{% else %}{{ TotalAE |number_format(2, ' , ' ,  '  ') }}{% endif %}{% endif %}
+									{% if cpc.type == 'TF' %}{% if TotalF == 0 %}{% else %}{{ TotalF |number_format(2, ' , ' ,  '  ') }}{% endif %}{% endif %}
+									{% if cpc.type == 'TG' %}{% if TotalG == 0 %}{% else %}{{ TotalG |number_format(2, ' , ' ,  '  ') }}{% endif %}{% endif %}
+									{% if cpc.type == 'TFG' %}{% if TotalFG == 0 %}{% else %}{{ TotalFG |number_format(2, ' , ' ,  '  ') }}{% endif %}{% endif %}
+									{% if cpc.type == 'TAG' %}{% if TotalAG == 0 %}{% else %}{{ TotalAG |number_format(2, ' , ' ,  '  ') }}{% endif %}{% endif %}
+									{% if cpc.type == 'TTT' %}{% if TotalTT == 0 %}{% else %}{{ TotalTT |number_format(2, ' , ' ,  '  ') }}{% endif %}{% endif %}
+									{% if cpc.type == 'TAZE' %}{% if TAZE == 0 %}{% else %}{{ TAZE |number_format(2, ' , ' ,  '  ') }}{% endif %}{% endif %}
+									{% if cpc.type == 'TAZEE' %}{% if TAZEE == 0 %}{% else %}{{ TAZEE |number_format(2, ' , ' ,  '  ') }}{% endif %}{% endif %}
+									
+							</td>
+
+								<td style="text-align: center;"></td>
+
+							<td>
+								{% if cpc.Grp == 1 %}<i class="fas fa-plus colorTr"></i>{% endif %}
+								{% if cpc.Grp == 3 %}<i class="fas fa-plus colorTe"></i>{% endif %}
+							</td>
+
+
+
+						</tr>
+
+							{% set ResultatNet = 0 %}
+
+						{% if cpc.type == 'TTT' %}
+						
+							{% set ResultatNet = TotalTT %}
+
+								<script>
+
+									$(document).ready(function(){
+										var ResultatNet = '{{ ResultatNet }}';
+										$.ajax({
+											url: "/test",
+											method: 'POST',
+											data: {ResultatNet: ResultatNet},
+										}); 
+									});
+
+								</script>
+
+						{% endif %}
+
+					{% endfor %}
+
+				</tbody>
+			</table>
+		</div>
+		
+			
+			
+		<div class="tableright col-3">
+			<div class="table table-wrapper" id="table-cont">
+				<div id="table-scroll">
+					<table class="table table-hover table2 mt-1 " id="entriestable">
+						<thead class="thead-light" id="thead">
+							<tr>
+								<th scope="col" style="text-align: center;">Libelle</th>
+								<th scope="col">Exercice N</th>
+								<th scope="col">Exercice N-1</th>
+							</tr>
+						</thead>
+						<tbody id="balanceTablecpc"></tbody>
+					</table>
+				</div>
+			</div>
+			<div class="table table-wrapper">
+				<div id="table-scroll">
+					<table class="table table-hover table3">
+						<thead class="thead-light" id="thead">
+							<tr>
+								<th scope="col" style="text-align: center;">Libelle</th>
+								<th scope="col">Exercice N</th>
+								<th scope="col">Exercice N-1</th>
+							</tr>
+						</thead>
+						<tbody id="balanceTablecpc1"></tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script src="{{asset('assetss/js/cpc.js')}}"></script>

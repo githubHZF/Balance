@@ -1,0 +1,133 @@
+
+	<link rel="stylesheet" href="{{asset('assetss/css/passif.css')}}">
+
+	<div class="display" style="display: flex;">
+		<div class="card-body table1 col-9" id="table-scroll1" >
+			<table id="passif" class=" display text-center table-hover" style="width: 100%">
+				<thead>
+					<tr>
+						<th width="-5px">LIBELLE</th>
+						<th></th>
+						<th style="text-align:center;">EXERCICE N</th>
+						<th style="text-align:center;">EXERCICE N-1</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody id="soldesYears">
+
+					{% for soldesYear in soldesYears %}
+
+							{% if soldesYear.type == 'TNT' %}
+
+								{% set soldesYear = soldesYear|merge({'solde':ResultatNet}) %}
+
+							{% endif %}
+
+						<tr id="click-first" {% if soldesYear.titre == 1 %} class="colorTr" {% endif %}{% if soldesYear.titre == 3 %} class="colorTe" {% endif %}>
+							<td style="text-align:start; width:40% !important;">{{ soldesYear.libelle }}</td>
+							<td style="text-align: center;" id="postepassif">{{ soldesYear.poste }}</td>
+							<td style="text-align: center;">
+
+								<div class="showTable">
+
+										{% set TotalA = 0 %}
+										{% set TotalTNT = ResultatNet %}
+										{% set TotalAA = 0 %}
+										{% set TotalB = 0 %}
+										{% set TotalC = 0 %}
+										{% set TotalD = 0 %}
+										{% set TotalE = 0 %}
+										{% set TotalAE = 0 %}
+										{% set TotalF = 0 %}
+										{% set TotalG = 0 %}
+										{% set TotalH = 0 %}
+										{% set TotalFH = 0 %}
+										{% set TotalI = 0 %}
+										{% set TotalII = 0 %}
+										{% set TotalAI = 0 %}
+
+									{% for s in soldesYears %}
+
+											{% if s.type == 'A' %}{% set TotalA = TotalA +  s.solde  %}{% endif %}
+											{% if s.type == 'TNT' %}{% set TotalTNT = + TotalTNT %}{% endif %}
+											{% set TotalAA = TotalA + TotalTNT  %}
+											{% if s.type == 'B' %}{% set TotalB = TotalB +  s.solde  %}{% endif %}
+											{% if s.type == 'C' %}{% set TotalC = TotalC +  s.solde  %}{% endif %}
+											{% if s.type == 'D' %}{% set TotalD = TotalD +  s.solde  %}{% endif %}
+											{% if s.type == 'E' %}{% set TotalE = TotalE +  s.solde  %}{% endif %}
+											{% set TotalAE = TotalAA +  TotalB + TotalC  + TotalD + TotalE %}
+											{% if s.type == 'F' %}{% set TotalF = TotalF +  s.solde  %}{% endif %}
+											{% if s.type == 'G' %}{% set TotalG = TotalG +  s.solde  %}{% endif %}
+											{% if s.type == 'H' %}{% set TotalH = TotalH +  s.solde  %}{% endif %}
+											{% set TotalFH = TotalH + TotalG + TotalF %}
+											{% if s.type == 'I' %}{% set TotalI = TotalI +  s.solde  %}{% endif %}
+											{% set TotalII = TotalI  %}
+											{% set TotalAI = TotalII + TotalAE + TotalFH  %}
+
+									{% endfor %}
+
+
+										{% if soldesYear.type == 'TA' %}{{ TotalAA |number_format(2, ' , ' ,  '  ') }}{% else %}
+										{% if soldesYear.solde == 0 %}{% else %}{{ soldesYear.solde |number_format(2, ' , ' ,  '  ') }}{% endif %}{% endif %}
+										{% if soldesYear.type == 'TB' %}{% if TotalB == 0 %} {% else %}{{ TotalB |number_format(2, ' , ' ,  '  ') }}{% endif %}{% endif %}
+										{% if soldesYear.type == 'TC' %}{% if TotalC == 0 %}{% else %}{{ TotalC |number_format(2, ' , ' ,  '  ') }}{% endif %}{% endif %}
+										{% if soldesYear.type == 'TD' %}{% if TotalD == 0 %}{% else %}{{ TotalD |number_format(2, ' , ' ,  '  ') }}{% endif %}{% endif %}
+										{% if soldesYear.type == 'TE' %}{% if TotalE == 0 %}{% else %}{{ TotalE |number_format(2, ' , ' ,  '  ') }}{% endif %}{% endif %}
+										{% if soldesYear.type == 'TAE' %}{% if TotalAE == 0 %}{% else %}{{ TotalAE |number_format(2, ' , ' ,  '  ') }}{% endif %}{% endif %}
+										{% if soldesYear.type == 'TF' %}{% if TotalF == 0 %}{% else %}{{ TotalF |number_format(2, ' , ' ,  '  ') }}{% endif %}{% endif %}
+										{% if soldesYear.type == 'TG' %}{% if TotalG == 0 %}{% else %}{{ TotalG |number_format(2, ' , ' ,  '  ') }}{% endif %}{% endif %}
+										{% if soldesYear.type == 'TH' %}{% if TotalH == 0 %}{% else %}{{ TotalH |number_format(2, ' , ' ,  '  ') }}{% endif %}{% endif %}
+										{% if soldesYear.type == 'TFH' %}{% if TotalFH == 0 %}{% else %}{{ TotalFH |number_format(2, ' , ' ,  '  ') }}{% endif %}{% endif %}
+										{% if soldesYear.type == 'TI' %}{% if TotalI == 0 %}{% else %}{{ TotalI |number_format(2, ' , ' ,  '  ') }}{% endif %}{% endif %}
+										{% if soldesYear.type == 'TII' %}{% if TotalII == 0 %}{% else %}{{ TotalII |number_format(2, ' , ' ,  '  ') }}{% endif %}{% endif %}
+										{% if soldesYear.type == 'TAI' %}{% if TotalAI == 0 %}{% else %}{{ TotalAI |number_format(2, ' , ' ,  '  ') }}{% endif %}{% endif %}
+
+								</div>
+							</td>
+							<td style="text-align: center;"></td>
+							<td>
+								{% if soldesYear.titre == 1 %}<i class="fas fa-plus colorTr "></i>{% endif %} 
+								{% if soldesYear.titre == 3 %}<i class="fas fa-plus colorTe "></i>{% endif %} 
+							</td>
+						</tr>
+
+					{% endfor %}
+
+				</tbody>
+			</table>
+		</div>
+
+		<div class="tableright col-3">
+			<div class="table table-wrapper" id="table-cont">
+				<div id="table-scroll">
+					<table class="table table-hover table2 mt-1" id="entriestable">
+						<thead class="thead-light" id="thead">
+							<tr>
+								<th scope="col" style="text-align: center;">Libelle</th>
+								<th scope="col" style="text-align: center;">Exercice N</th>
+								<th scope="col" style="text-align: center;">Exercice N-1</th>
+							</tr>
+						</thead>
+						<tbody id="balanceTop"></tbody>
+					</table>
+				</div>
+			</div>
+			
+			<div class=" table table-wrapper" id="table-cont">
+				<div id="table-scroll">
+					<table class="table table-hover table3" id="entriestable">
+						<thead class="thead-light" id="thead">
+							<tr id="trtotal">
+								<th scope="col" style="text-align: center;">Libelle</th>
+								<th scope="col" style="text-align: center;">Exercice N</th>
+								<th scope="col" style="text-align: center;">Exercice N-1</th>
+							</tr>
+						</thead>
+						<tbody id="balanceButton"></tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+
+		<script src="{{asset('assetss/js/passif.js')}}"></script>

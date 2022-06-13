@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  	<head>
+    
+	    <title>Balance</title>
+	    <meta charset="utf-8">
+	    <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="assetss/css/main.css">
+	    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="shortcut icon" href="#">
+
+
+  	</head>
+
+      <style>
+
+        body{
+            font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif !important;}
+        .tile user-settings{
+            margin-top: 20px;
+        }
+        .mb-4, .my-4 {
+            margin-bottom: 0.5rem !important;
+        }
+        .fa-user:before {
+            line-height: 46px;
+        }
+        .fa-lg {
+            color: white;
+        }
+        .tst{
+            font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif !important;
+        }
+      
+      </style>
+
+    <body class="app sidebar-mini">
+        <header class="app-header">
+            {# <a class="app-header__logo tst" href="{{path('balance')}}">Balance</a> #}
+            <a class="app-sidebar__toggle" href="#" data-toggle="sidebar" aria-label="Hide Sidebar"></a>
+        </header>
+        <div class="app-sidebar__overlay" data-toggle="sidebar"></div>
+            <aside class="app-sidebar">
+                <ul class="app-menu">
+                    <li><a class="app-menu__item" href="{{path('balance')}}"><i class="app-menu__icon fa fa-dashboard"></i><span class="app-menu__label">Balance</span></a></li>
+                    <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-laptop"></i><span class="app-menu__label">Réglages</span><i class="treeview-indicator fa fa-angle-right"></i></a>
+                    <ul class="treeview-menu">
+                        <li><a class="treeview-item" href="{{path('app_side')}}"> Profil</a></li>
+                        <li><a class="treeview-item" href="{{path('app_login')}}" target="_blank" rel="noopener"><i class="fas fa-sign-out-alt"></i> Se déconnecter </a></li>
+                    </ul>
+                    </li>
+                </ul>
+            </aside>
+        <main class="app-content">
+        <div class="row user">
+            <div class="col-md-12">
+            <div class="profile">
+                <div class="info"><img class="user-img" src="https://s3.amazonaws.com/uifaces/faces/twitter/jsa/128.jpg">
+                {# <h4>John Doe</h4> #}
+                {# <p>FrontEnd Developer</p> #}
+                </div>
+                <div class="cover-image"></div>
+            </div>
+            </div>
+            <div class="col-md-3">
+            <div class="tile p-0">
+                <ul class="nav flex-column nav-tabs user-tabs">
+                {# <li class="nav-item"><a class="nav-link active" href="#user-timeline" data-toggle="tab">Timeline</a></li> #}
+                <li class="nav-item"><a class="nav-link" href="#user-settings" data-toggle="tab">Changer le mot de passe</a></li>
+                </ul>
+            </div>
+            </div>
+                <div class="col-md-9">
+                    <div class="tab-pane fade" id="user-settings">
+                        <div class="tile user-settings" style="margin-top:21px;">
+                            <h4 class="line-head">Nouveau Mot de passe </h4>
+                            <form>
+                                <div class="row">
+                                    <div class="col-md-8 mb-4">
+                                        <label>Mot de passe</label>
+                                        <input class="form-control" type="Password">
+                                    </div>
+                                    <div class="clearfix"></div>
+                                    <div class="col-md-8 mb-4">
+                                        <label>Mot de passe</label>
+                                        <input class="form-control" type="Password">
+                                    </div>
+                                </div>
+                                <div class="row mb-10">
+                                    <div class="col-md-12">
+                                        <button class="btn btn-primary" type="button"><i class="fa fa-fw fa-lg fa-check-circle"></i> Save</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </main>
+
+        <script src="assetss/js/jquery-3.6.0.js"></script>
+        <script src="assetss/js/bootstrap.min.js"></script>
+        <script src="assetss/js/popper.min.js"></script>
+        <script src="assetss/js/main.js"></script>
+        <script src="{{asset('assetss/js/jquery-3.6.0.js')}}"></script>
+
+
+        <script type="text/javascript">
+
+            if(document.location.hostname == 'pratikborsadiya.in') {
+
+                (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+                ga('create', 'UA-72504830-1', 'auto');
+                ga('send', 'pageview');
+            }
+
+        </script>
+  </body>
+</html>

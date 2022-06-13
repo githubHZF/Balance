@@ -1,0 +1,35 @@
+		
+								<div style="display: flex; justify-content: space-between" id="menu">
+									<div class="form-input" style="display: none;">
+										<label for="niveau_1">Exercice :</label>
+										<select class="form-control niveau" name="niveau_3" id="niv_1">
+											<option value="" style="text-align:center;">2021</option>
+										</select>
+									</div>
+									<div class="form-input">
+										<label for="niveau_1">Exercice :</label>
+										<select class="form-control niveau " name="niveau_3" id="year">
+											<option value="">CHOIX ANNÉE</option>
+											<option value="Year">2021</option>
+										</select>
+									</div>
+									<div class="form-input">
+										<label for="niveau_2">Organisme :</label>
+										<select class="form-control niveau" name="Organisme" id="Organisme">
+											<option value="">CHOIX ORGANISME</option>
+											{% for organisme in organismes %}
+												<option value="{{ organisme.id }}">
+													{{ organisme.organisme }}
+												</option>
+											{% endfor %}
+										</select>
+									</div>
+									<div class="form-input">
+										<label for="niveau_1">Dossier :</label>
+										<select class="form-control niveau" name="Pdossier" id="Pdossier"></select>
+									</div>
+									<div class="form-input">
+										<label for="niveau_1">Sous Dossier :</label>
+										<select class="form-control niveau" name="sousDossier" id="sousDossier"></select>
+									</div>
+								</div>

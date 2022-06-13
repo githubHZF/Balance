@@ -1,0 +1,31 @@
+{% for soldesYear in soldesYears %}
+
+						<tr id="click-first" {% if soldesYear.titre %} class="colorTr" {% endif %}>
+							<td style="text-align:start;">{{ soldesYear.libelle }}</td>
+							<td style="text-align: center;" id="postepassif">{{ soldesYear.poste }}</td>
+
+							{% if soldesYear.solde == 0 %}
+								<td style="text-align: end;">
+									<div class="showTable">
+										{{ soldesYear.solde}}
+									</div>
+								</td>
+							{% else %}
+								<td style="text-align: end;">
+									<div class="showTable">
+										{{ soldesYear.solde|number_format(2, ' , ' ,  '  ')}}
+									</div>
+								</td>
+							{% endif %}
+
+							<td style="text-align: center;">
+								<div class="showTable"></div>
+							</td>
+							<td>
+								{% if  soldesYear.titre %}
+									<i class="fas fa-plus colorTr"></i>
+								{% endif %}
+							</td>
+						</tr>
+
+					{% endfor %}

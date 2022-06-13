@@ -1,0 +1,101 @@
+body{
+    font-size:10px !important;
+    background-color:#fff !important;
+    background:#fff !important;
+    font-weight:bold;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif !important;
+
+}
+.nav-pills .nav-link {
+    width: 100px;
+}
+.card-header {
+    background-color: #fff !important;
+    border-bottom: 1px solid #fff !important;
+    margin-top: -35px !important;
+    margin-bottom: -1px !important;
+    margin-right: 89px !important;
+    padding: 0.5rem 2rem !important;
+}
+.d-md-block {
+    display: block !important;
+    margin: 5px !important;
+}
+table.dataTable {
+padding: none !important;
+}
+.col-md-7 {
+    font-weight: bold;
+    margin-top: -11px !important;
+}
+div.dataTables_wrapper div.dataTables_info {
+    margin-top: 7px !important;
+    width: -1px !important;
+}
+label {
+    display: inline-block;
+    margin-bottom: 0.1rem !important;
+    font-weight:bold;
+}
+div.dataTables_wrapper div.dataTables_length label {
+    font-weight: bold;
+    width:50px !important;
+}
+#menu{
+    margin-left: -14rem;
+    margin-top: -2.5rem;
+    margin-bottom: 3px;
+    
+}
+.form-control {
+    height: 23px !important;
+    appearance: auto !important ;
+}
+div.dataTables_wrapper div.dataTables_length select {
+    width: 50px !important;
+}
+div.dataTables_wrapper div.dataTables_filter label {
+    font-weight: bold;
+}
+div.dataTables_wrapper div.dataTables_info {
+    font-weight: bold;
+}
+.tab{
+
+    margin-left: -13rem !important;
+    margin-top: 5px;
+}
+.nav-fill .nav-item .nav-link, .nav-justified .nav-item .nav-link {
+    width: 98%;
+    height: 25px;
+    line-height: 2px;
+}
+.col-md-6 {
+    margin-top: -15px;
+}
+.col-sm-12 {
+    margin-top: 1px;
+}
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+    color: #fff;
+    background-color: steelblue;
+}
+
+table.dataTable thead th, table.dataTable thead td {
+    padding: 4px 23px !important;
+}
+
+.table>:not(caption)>*>* {
+     border-bottom-width: none !important; 
+}
+.dataTables_length select {
+    padding: 3px 2px !important;
+    height: 30px;
+}
+table.dataTable thead>tr>th.sorting, table.dataTable thead>tr>th.sorting_asc, table.dataTable thead>tr>th.sorting_desc, table.dataTable thead>tr>th.sorting_asc_disabled, table.dataTable thead>tr>th.sorting_desc_disabled, table.dataTable thead>tr>td.sorting, table.dataTable thead>tr>td.sorting_asc, table.dataTable thead>tr>td.sorting_desc, table.dataTable thead>tr>td.sorting_asc_disabled, table.dataTable thead>tr>td.sorting_desc_disabled {
+    width: 12% !important;
+    padding: 13px !important;
+}
+table.dataTable {
+    margin-top: -7px !important;
+}
